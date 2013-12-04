@@ -6,17 +6,6 @@ var mainApp = angular.module("mainApp", [
                                           "FacebookPluginDirectives",
                                           "google-analytics"]);
 
-// mainApp.run(function($rootScope, $location, $anchorScroll, $routeParams) {
-//   //when the route is changed scroll to the proper element.
-//   $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
-//   	if(document.documentElement.clientWidth>=600)
-//   		return;
-//     $location.hash("contentArea");
-//     $anchorScroll();  
-//   });
-// });
-
-
 mainApp.controller("NavigationCtrl", function ($scope, $location, $anchorScroll, $modal, analytics) {
 
   var ModalInstanceCtrl = function ($scope, $modalInstance) {
@@ -30,13 +19,8 @@ mainApp.controller("NavigationCtrl", function ($scope, $location, $anchorScroll,
 	$scope.currentPage = "home";
   $scope.pages = [
           {label:'Home', location:'home'},
-          {label:'How We Work', location:'howWeWork'},
-          {label:'Attorneys & CPAs', location:'attorneysAndCPAs'},
-          {label:'Individuals', location:'individuals'},
-          {label:'Bios', location:'bio'},
-          {label:'Client Stories', location:'clientStories'},
-          {label:'Resources', location:'resources'},
-          {label:'Contact', location:'contact'}
+          {label:'Bio', location:'bio'},
+          {label:'Contact', location:'contact'},
           ];
 	$scope.gotoPage = function(item) {
     if(item.location)
@@ -137,7 +121,7 @@ mainApp.controller("NavigationCtrl", function ($scope, $location, $anchorScroll,
     })
   };
 }).controller("VideoCtrl", function($scope) {
-  $scope.videos = ["http://www.youtube.com/watch?v=rbBvvnU5R0Y", "http://www.youtube.com/watch?v=R2pwUtJwkkc"];
+  $scope.videos = ["https://www.youtube.com/watch?v=4AivEQmfPpk", "https://www.youtube.com/watch?v=y5UT04p5f7U"];
   $scope.currentVideoIndex = 0;
   $scope.selectedVideo = $scope.videos[0];
 
