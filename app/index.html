@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html data-ng-app="mainApp" id="ng-app">
+
+	<!-- HEAD -->
+	<head>
+
+		<title>Shankland Financial</title>
+
+		<!-- Locks zooming on mobile devices, sets an initial zoom of 1 and doesn't allow for change  -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>  
+
+		<!-- Meta data for AngularJS compatibility issues on IE 7/8  -->
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+
+		<!-- Creates HTML5 elements for older browsers (IE8 and lower) also polyfill JSON  -->
+		<!--[if lte IE 8]>
+		<script>
+		document.createElement('ng-include');
+		document.createElement('ng-view');
+		document.createElement('ng-pluralize');
+		document.createElement('ng:include');
+		document.createElement('ng:view');
+		document.createElement('ng:pluralize');
+		</script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/json3/3.2.4/json3.min.js"></script>
+		<![endif]-->
+
+		<!-- If lower than IE9 include HTML5 elements -->
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+
+		<!-- Including webfonts from Google for more consistent text across devices -->
+		<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+		<!-- Favorite Icon for web browser tabs/bookmarks -->
+		<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+		<link rel="icon" type="image/png" href="images/favicon.png" />
+		<link rel="apple-touch-icon" type="image/png" href="images/favicon.png" />
+		<link rel="apple-touch-icon-precomposed" type="image/png" href="images/favicon.png" />
+
+		<!-- Cascading Style Sheet(s) -->
+		<link rel="stylesheet" type="text/css" href="styles/animation.css">
+		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="styles/master.css">
+
+
+
+		<!-- AngularJS and components thereof -->
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js"></script>
+		<script src="vendor/ui-bootstrap-tpls-0.6.0.js"></script>
+
+		<!-- ReCaptcha (requires php folder as well) -->
+		<script type="text/javascript" src="//www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+		<script src="vendor/angular-recaptcha.js"></script>
+
+		<!-- Google Maps -->
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+		<script src="vendor/angular-google-maps.js"></script>
+
+		<!-- Google Analytics -->
+	  <script type="text/javascript" src="scripts/googleAnalyticsSiteSpecific.js"></script>
+		<script type="text/javascript" src="scripts/googleAnalyticsService.js"></script>
+
+		<!-- YouTube, Vimeo, and DailyMotion Embedding made easy -->
+		<script src="vendor/ng-videosharing-embed.js"></script>
+
+		<!-- Facebook API -->
+		<script src="http://connect.facebook.net/en_US/all.js#xfbml=1&appId=1379607822274503"></script>
+		<script src="scripts/facebookDirectives.js"></script>
+
+		<script type="text/javascript" src="mainApp.js"></script>
+
+	</head>
+
+
+	<!-- BODY -->
+	<body ng-controller="NavigationCtrl">
+
+		<div id="wrap">
+		
+			<ng-include
+				src="'views/header.html'">
+			</ng-include>
+		
+			<div
+				class="bodyContent"
+				ng-view
+				ng-animate="'animate'">
+			</div>
+		
+			<div id="push">   
+			</div>
+		
+		</div>
+
+		<ng-include
+			src="'views/footer.html'">
+		</ng-include>
+
+	</body>
+
+</html>

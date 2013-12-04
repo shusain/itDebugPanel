@@ -1,0 +1,15 @@
+{
+	"folders":
+	[
+		{
+			"path": "../.",
+      			"folder_exclude_patterns": [
+				".tmp", 
+				"databaseBackups", 
+				"sublime",
+				"node_modules"]
+
+		}
+	]
+	
+}
