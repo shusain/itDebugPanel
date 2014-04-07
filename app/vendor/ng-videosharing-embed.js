@@ -79,7 +79,7 @@ angular.module('videosharing-embed').factory('RegisteredPlayers', [ 'PlayerConfi
     });
     return players;
 }]);
-angular.module('videosharing-embed').directive('embedVideo', [ '$filter' , 'RegisteredPlayers', function ($filter, RegisteredPlayers) {
+angular.module('videosharing-embed').directive('embedVideo', [ '$filter', '$sce', 'RegisteredPlayers', function ($filter, $sce, RegisteredPlayers) {
 	'use strict';
     function verifyConfig(url, $scope, attrs)
     {
@@ -107,10 +107,14 @@ angular.module('videosharing-embed').directive('embedVideo', [ '$filter' , 'Regi
         angular.forEach($filter('whitelist')(attrs, player.whitelist), function (value, key) {
             $scope.config.options[key] = value;
         });
+
+        $scope.safeURL =  $sce.trustAsResourceUrl($scope.config.protocol+$scope.config.playerID+$scope.videoID+$filter('videoOptions')($scope.config.options));
+
+        //TODO filter options with videoOptions
     }
     return {
         restrict: "A",
-        template: '<iframe class="videoDirective" src="{{config.protocol}}{{config.playerID}}{{videoID}}{{config.options | videoOptions}}" frameborder="0"></iframe>',
+        template: '<iframe class="videoDirective" src="{{safeURL}}" frameborder="0"></iframe>',
         scope : {url:'='},
 		replace : true,
         link: function ($scope, element, attrs) {

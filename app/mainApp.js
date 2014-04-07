@@ -1,10 +1,13 @@
 var mainApp = angular.module("mainApp", [
-                                          "ui.bootstrap",
-                                          "vcRecaptcha",
-                                          "videosharing-embed",
-                                          "google-maps",
-                                          "FacebookPluginDirectives",
-                                          "google-analytics"]);
+  "ngRoute",
+  "ngAnimate",
+  "ngSanitize",
+  "ui.bootstrap",
+  "vcRecaptcha",
+  "videosharing-embed",
+  "google-maps",
+  "FacebookPluginDirectives",
+  "google-analytics"]);
 
 mainApp.controller("NavigationCtrl", function ($scope, $location, $anchorScroll, $modal, analytics) {
 

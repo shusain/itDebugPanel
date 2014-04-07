@@ -43,37 +43,10 @@
 
 		<!-- Cascading Style Sheet(s) -->
 		<link rel="stylesheet" type="text/css" href="styles/animation.css">
-		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
 		<link rel="stylesheet" type="text/css" href="styles/master.css">
 
 
-
-		<!-- AngularJS and components thereof -->
-		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js"></script>
-		<script src="vendor/ui-bootstrap-tpls-0.6.0.js"></script>
-
-		<!-- ReCaptcha (requires php folder as well) -->
-		<script type="text/javascript" src="//www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
-		<script src="vendor/angular-recaptcha.js"></script>
-
-		<!-- Google Maps -->
-		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-		<script src="vendor/angular-google-maps.js"></script>
-
-		<!-- Google Analytics -->
-	  <script type="text/javascript" src="scripts/googleAnalyticsSiteSpecific.js"></script>
-		<script type="text/javascript" src="scripts/googleAnalyticsService.js"></script>
-
-		<!-- YouTube, Vimeo, and DailyMotion Embedding made easy -->
-		<script src="vendor/ng-videosharing-embed.js"></script>
-
-		<!-- Facebook API -->
-		<script src="http://connect.facebook.net/en_US/all.js#xfbml=1&appId=1379607822274503"></script>
-		<script src="scripts/facebookDirectives.js"></script>
-
-		<script type="text/javascript" src="mainApp.js"></script>
-
-		<script type="text/javascript" src="//192.168.11.36:35729/livereload.js"></script>
 	</head>
 
 
@@ -87,9 +60,8 @@
 			</ng-include>
 		
 			<div
-				class="bodyContent"
-				ng-view
-				ng-animate="'animate'">
+				class="bodyContent animate"
+				ng-view>
 			</div>
 		
 			<div id="push">   
@@ -100,6 +72,90 @@
 		<ng-include
 			src="'views/footer.html'">
 		</ng-include>
+
+
+
+		<!-- AngularJS and components thereof -->
+		<script
+			type="text/javascript"
+			src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js">
+		</script>
+		<script
+			type="text/javascript"
+			src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.js">
+		</script>
+		<script
+			type="text/javascript"
+			src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.js">
+		</script>
+		<script
+			type="text/javascript"
+			src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.js">
+		</script>
+		<script
+			type="text/javascript"
+			src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-sanitize.js">
+		</script>
+		<script
+			type="text/javascript"
+			src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js">
+		</script>
+
+		<!-- ReCaptcha (requires php folder as well) -->
+		<script
+			type="text/javascript"
+			src="//www.google.com/recaptcha/api/js/recaptcha_ajax.js">
+		</script>
+		<script
+			type="text/javascript"
+			src="vendor/angular-recaptcha.js">
+		</script>
+
+		<!-- Google Maps -->
+		<script
+			type="text/javascript"
+			src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=places">
+		</script>
+		<script
+			type="text/javascript"
+			src="vendor/angular-google-maps.js">
+		</script>
+
+		<!-- Google Analytics -->
+	  <script
+	  	type="text/javascript"
+	  	src="scripts/googleAnalyticsSiteSpecific.js">
+	  </script>
+		<script
+			type="text/javascript"
+			src="scripts/googleAnalyticsService.js">
+		</script>
+
+		<!-- YouTube, Vimeo, and DailyMotion Embedding made easy -->
+		<script
+			type="text/javascript"
+			src="vendor/ng-videosharing-embed.js">
+		</script>
+
+		<!-- Facebook API -->
+		<script
+			type="text/javascript"
+			src="http://connect.facebook.net/en_US/all.js#xfbml=1&appId=1379607822274503">
+		</script>
+		<script
+			type="text/javascript"
+			src="scripts/facebookDirectives.js">
+		</script>
+
+		<script
+			type="text/javascript"
+			src="mainApp.js">
+		</script>
+
+		<script
+			type="text/javascript"
+			src="//192.168.11.36:35729/livereload.js">
+		</script>
 
 	</body>
 
