@@ -2,7 +2,8 @@
   "name": "project-template",
   "version": "0.0.2",
   "dependencies": {
-    "karma-junit-reporter": "~0.2.2"
+    "karma-junit-reporter": "~0.2.2",
+    "karma-phantomjs-launcher": "~0.1.4"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
