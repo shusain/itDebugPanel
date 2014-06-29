@@ -54,8 +54,12 @@ module.exports = function(config) {
     browsers: ['Chrome'],
 
 
+    reporters: ['dots', 'junit'],
+    junitReporter: {
+      outputFile: 'test-results.xml'
+    },
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false
+    singleRun: true
   });
 };
