@@ -4,3 +4,4 @@ deploy :
 	sudo rm -rf $(app_dir)
 	sudo mkdir -p $(app_dir)
 	sudo cp -R dist/* $(app_dir)/
+	sudo chown -R ubuntu:developers $(app_dir)
