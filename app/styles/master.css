@@ -16,13 +16,14 @@ body {
   height: auto !important;
   height: 100%;
   /* Negative indent footer by it's height */
-  margin: 0 auto -335px;
+  margin: 0 auto -300px;
+  padding-bottom: 1em;
 }
 
 /* Set the fixed height of the footer here */
 #push,
 footer {
-  height: 350px;
+  height: 300px;
 }
 
 
@@ -70,12 +71,8 @@ footer {
 
 
 
-
-
-
-
-
-
+/********** Captcha fix *****************/
+iframe[src="about:blank"]{display:none;}
 
 
 
@@ -243,7 +240,7 @@ li.imgBullet>span.bullet
   font-family: "museo_slab500";
   font-size: 14pt;
   background-image: url("../images/headerBackground.png");
-  height:52px;
+  height:88px;
   padding-top: 36px;
   margin-bottom: 2em;
 }
