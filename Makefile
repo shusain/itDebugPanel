@@ -1,4 +1,4 @@
-staging_dir = /var/www/intellectual-tech/staging/project-template
+staging_dir = /var/www/intellect-tech/staging/project-template
 production_dir = /var/www/project-template
 
 deploy_staging :
