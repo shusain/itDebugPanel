@@ -16,4 +16,3 @@ node_modules
 generic.sublime-workspace
 app/bower_components/
 .tmp/
-dist/

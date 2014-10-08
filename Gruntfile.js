@@ -59,11 +59,11 @@ module.exports = function (grunt) {
     html2js: {
       options: {
         // custom options, see below
-        base:"component",
+        base:"app",
         module:"component-templates"
       },
       main: {
-        src: ['component/templates/**/*.tpl.html'],
+        src: ['app/component/templates/**/*.tpl.html'],
         dest: '.tmp/templates.js'
       },
     },
@@ -235,15 +235,15 @@ module.exports = function (grunt) {
 
     // Allow the use of non-minsafe AngularJS files. Automatically makes it
     // minsafe compatible so Uglify does not destroy the ng references
-    ngmin: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '.tmp/concat/scripts',
-          src: '*.js',
-          dest: '.tmp/concat/scripts'
-        }]
-      }
+    ngAnnotate: {
+        options: {
+            singleQuotes: true,
+        },
+        dist: {
+            files: {
+                '<%= yeoman.dist %>/component-min.js': ['<%= yeoman.dist %>/*.js']
+            },
+        },
     },
 
     // Replace Google CDN references
@@ -326,7 +326,7 @@ module.exports = function (grunt) {
         separator: ';'
       },
       dist: {
-        src: ['app/scripts/**/*.js', '.tmp/templates.js'],
+        src: ['app/component/**/*.js', '.tmp/templates.js'],
         dest: 'dist/component-min.js'
       }
     },
@@ -378,7 +378,7 @@ module.exports = function (grunt) {
     'concurrent:dist',
     'autoprefixer',
     'concat',
-    'ngmin',
+    'ngAnnotate',
     'copy:dist',
     'cdnify',
     'cssmin',
