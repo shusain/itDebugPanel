@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="PhantomJS 1.9.7 (Linux)" package="" timestamp="2014-10-07T23:32:31" id="0" hostname="laptop" tests="1" errors="0" failures="0" time="0.006">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.7 Safari/534.34"/>
+    </properties>
+    <testcase name="should attach a list of pages to the scope" time="0.006" classname="PhantomJS 1.9.7 (Linux).Controller: MainCtrl"/>
+    <system-out><![CDATA[
+]]></system-out>
+    <system-err/>
+  </testsuite>
+</testsuites>

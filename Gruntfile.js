@@ -56,13 +56,24 @@ module.exports = function (grunt) {
         ]
       }
     },
+    html2js: {
+      options: {
+        // custom options, see below
+        base:"app",
+        module:"component-templates"
+      },
+      main: {
+        src: ['app/component/templates/**/*.tpl.html'],
+        dest: '.tmp/templates.js'
+      },
+    },
 
     // The actual grunt server settings
     connect: {
       options: {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
+        hostname: '0.0.0.0',
         livereload: 35729
       },
       livereload: {
@@ -224,15 +235,15 @@ module.exports = function (grunt) {
 
     // Allow the use of non-minsafe AngularJS files. Automatically makes it
     // minsafe compatible so Uglify does not destroy the ng references
-    ngmin: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '.tmp/concat/scripts',
-          src: '*.js',
-          dest: '.tmp/concat/scripts'
-        }]
-      }
+    ngAnnotate: {
+        options: {
+            singleQuotes: true,
+        },
+        dist: {
+            files: {
+                '<%= yeoman.dist %>/component-min.js': ['<%= yeoman.dist %>/*.js']
+            },
+        },
     },
 
     // Replace Google CDN references
@@ -253,11 +264,7 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
-            '*.html',
-            'views/{,*/}*.html',
-            'bower_components/**/*',
-            'images/{,*/}*.{webp}',
-            'fonts/*'
+            '*.html'
           ]
         }, {
           expand: true,
@@ -302,18 +309,28 @@ module.exports = function (grunt) {
     //     }
     //   }
     // },
-    // uglify: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/scripts/scripts.js': [
-    //         '<%= yeoman.dist %>/scripts/scripts.js'
-    //       ]
-    //     }
-    //   }
-    // },
+    uglify: {
+      dist: {
+        files: {
+          '<%= yeoman.dist %>/component-min.js': [
+            '<%= yeoman.dist %>/component-min.js'
+          ]
+        }
+      }
+    },
     // concat: {
     //   dist: {}
     // },
+    concat: {
+      options: {
+        separator: ';'
+      },
+      dist: {
+        src: ['app/component/**/*.js', '.tmp/templates.js'],
+        dest: 'dist/component-min.js'
+      }
+    },
+
 
     // Test settings
     karma: {
@@ -355,17 +372,18 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'html2js',
     'bower-install',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
     'concat',
-    'ngmin',
+    'ngAnnotate',
     'copy:dist',
     'cdnify',
     'cssmin',
     'uglify',
-    'rev',
+    // 'rev',
     'usemin',
     'htmlmin'
   ]);
