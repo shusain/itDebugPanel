@@ -8,6 +8,7 @@
   "ignore":[
     "dist/index.html",
     "dist/scripts",
+    "dist/component",
     "dist/bower_components"
   ],
   "dependencies": {
