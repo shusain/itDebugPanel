@@ -269,7 +269,7 @@
               '*.html',
               'scripts/**/*.js',
               'component/**/*.{js,html}',
-              'bower_components/**/*.{js,html}'
+              'bower_components/**/*.{js,html,css}'
             ]
           }, {
             expand: true,
