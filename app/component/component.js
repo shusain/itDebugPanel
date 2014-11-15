@@ -57,8 +57,6 @@ angular.module('itDebugPanel', ['itDebugTemplates'])
       templateUrl:'component/templates/debugPanel.tpl.html',
       link:function(scope){
         $document.bind('keydown', function(event){
-          console.log(event);
-          console.log(event.keyUp);
           if(event.keyCode == 68 && event.shiftKey && event.altKey){
             scope.panelVisible = !scope.panelVisible;
             scope.$apply();
