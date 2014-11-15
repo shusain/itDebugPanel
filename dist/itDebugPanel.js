@@ -141,7 +141,7 @@ angular.module('itDebugPanel', ['itDebugTemplates'])
         });
       }
     };
-  });;angular.module('itDebugModuleTemplates', ['component/templates/debugPanel.tpl.html', 'component/templates/optionsForm.tpl.html']);
+  });;angular.module('itDebugTemplates', ['component/templates/debugPanel.tpl.html', 'component/templates/optionsForm.tpl.html']);
 
 angular.module("component/templates/debugPanel.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("component/templates/debugPanel.tpl.html",

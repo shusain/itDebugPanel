@@ -62,7 +62,7 @@
         options: {
           // custom options, see below
           base:'app',
-          module:'itDebugModuleTemplates'
+          module:'itDebugTemplates'
         },
         main: {
           src: ['app/component/templates/**/*.tpl.html'],
