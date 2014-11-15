@@ -1,3 +1,32 @@
-h1{
-  text-align: center;
+.debugPanel {
+  position: relative;
+  border: 1px solid red;
+  cursor: pointer;
+  background-color: white;
+  width:400px;
+  min-height:900px;
+  max-height:100%;
+  overflow-y:scroll;
+  border-radius: 0px;
+}
+
+.debugPanelWrapper{
+  width:0px;
+  height:0px;
+  position:absolute;
+  z-index:1000;
+}
+
+.debugPanel .elementRow{
+  background-color: #ddffdd;
+}
+.debugPanel .selected{
+  background-color: #ccccff;
+}
+.debugPanel .well-sm
+{
+  margin-bottom:5px;
+}
+.debugPanel .glyphicon-remove:hover{
+  color:red;
 }

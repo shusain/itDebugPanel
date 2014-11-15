@@ -1,1 +1,1 @@
-h1{text-align:center}
+.debugPanel{position:relative;border:1px solid red;cursor:pointer;background-color:#fff;width:400px;min-height:900px;max-height:100%;overflow-y:scroll;border-radius:0}.debugPanelWrapper{width:0;height:0;position:absolute;z-index:1000}.debugPanel .elementRow{background-color:#dfd}.debugPanel .selected{background-color:#ccf}.debugPanel .well-sm{margin-bottom:5px}.debugPanel .glyphicon-remove:hover{color:red}

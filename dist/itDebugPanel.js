@@ -50,7 +50,7 @@ angular.module('itDebugPanel', ['itDebugTemplates'])
     };
   }])
 
-  .directive('debugPanel', function($document){
+  .directive('debugPanel', ['$document', function($document){
     return {
       restrict:'E',
       scope: { options: '=', panelVisible: '=?' },
@@ -67,9 +67,9 @@ angular.module('itDebugPanel', ['itDebugTemplates'])
         })
       }
     };
-  })
+  }])
 
-  .directive('optionsForm', function(RecursionHelper){
+  .directive('optionsForm', ['RecursionHelper', function(RecursionHelper){
     
     return {
       restrict:'E',
@@ -96,9 +96,9 @@ angular.module('itDebugPanel', ['itDebugTemplates'])
         });
       }
     };
-  })
+  }])
   // From the docs
-  .directive('myDraggable', function($document) {
+  .directive('myDraggable', ['$document', function($document) {
     return function(scope, element) {
       var startX = 0, startY = 0, x = 0, y = 0;
 
@@ -132,7 +132,7 @@ angular.module('itDebugPanel', ['itDebugTemplates'])
         $document.off('mouseup', mouseup);
       }
     };
-  }).directive('blockMouseDown', function(){
+  }]).directive('blockMouseDown', function(){
     return {
       restrict:'A',
       link:function(scope, iElem){
@@ -141,4 +141,49 @@ angular.module('itDebugPanel', ['itDebugTemplates'])
         });
       }
     };
-  });
+  });;angular.module('itDebugModuleTemplates', ['component/templates/debugPanel.tpl.html', 'component/templates/optionsForm.tpl.html']);
+
+angular.module("component/templates/debugPanel.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("component/templates/debugPanel.tpl.html",
+    "<div class=\"debugPanelWrapper\" ng-show=\"panelVisible\">\n" +
+    "  <div class=\"debugPanel panel panel-default\" my-draggable>\n" +
+    "    <div class=\"panel-heading\">\n" +
+    "      <span class=\"pull-right\" ng-click=\"panelVisible=false\">\n" +
+    "        <i class=\"glyphicon glyphicon-remove\"></i>\n" +
+    "      </span>\n" +
+    "      <h3 class=\"panel-title\">Debug Panel</h3>\n" +
+    "    </div>\n" +
+    "    <options-form options=\"options\">\n" +
+    "    </options-form>\n" +
+    "  </div>\n" +
+    "</div>");
+}]);
+
+angular.module("component/templates/optionsForm.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("component/templates/optionsForm.tpl.html",
+    "<div ng-show=\"getType(options) == 'Array'\">\n" +
+    "  <div ng-click=\"arrayVisible=!arrayVisible\" class=\"elementRow\" ng-class=\"{'selected':arrayVisible}\">\n" +
+    "    Array\n" +
+    "  </div>\n" +
+    "</div>\n" +
+    "<div ng-show=\"getType(options) != 'Array'||arrayVisible\" ng-repeat=\"(key, value) in options track by $index\" style=\"max-width:400px;\">\n" +
+    "  <div ng-if=\"isObject(options[key])\" class=\"well well-sm\">\n" +
+    "    <div ng-click=\"visible=!visible\" class=\"elementRow\" ng-class=\"{'selected':visible}\">Object: {{key}}</div>\n" +
+    "    <options-form ng-show=\"visible\" options=\"options[key]\">\n" +
+    "    </options-form>\n" +
+    "    <br/>\n" +
+    "  </div>\n" +
+    "  <div class=\"container-fluid\" ng-if=\"getType(options[key])!='Array'&&getType(options[key])!='Object'\">\n" +
+    "    <div class=\"row\">\n" +
+    "      <div class=\"col-xs-8\">\n" +
+    "        {{key}}:\n" +
+    "      </div>\n" +
+    "      <div ng-switch=\"getType(value)\">\n" +
+    "        <input ng-switch-when=\"Boolean\" block-mouse-down class=\"col-xs-4\" type=\"checkbox\" ng-model=\"options[key]\">\n" +
+    "        <input ng-switch-when=\"Number\" block-mouse-down class=\"col-xs-4\" type=\"number\" ng-model=\"options[key]\">\n" +
+    "        <input ng-switch-default block-mouse-down class=\"col-xs-4\" type=\"text\" ng-model=\"options[key]\">\n" +
+    "      </div>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "</div>");
+}]);

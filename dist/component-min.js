@@ -1,1 +1,0 @@
-angular.module("componentModule",[]),angular.module("component-templates",["component/templates/testTemplate.tpl.html"]),angular.module("component/templates/testTemplate.tpl.html",[]).run(["$templateCache",function(a){a.put("component/templates/testTemplate.tpl.html","<div>testing</div>")}]);

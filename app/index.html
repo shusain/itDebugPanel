@@ -15,7 +15,7 @@
 		<link
       rel="stylesheet"
       type="text/css"
-      href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+      href="bower_components/bootstrap-css-only/css/bootstrap.css"/>
 
 		<!-- build:css styles/optimized.css -->
 		<link
@@ -28,9 +28,12 @@
 
 
 	<!-- BODY -->
-	<body>
+	<body ng-controller="TestCtrl">
 		<h1>The perfect place to build components</h1>
 		<!-- AngularJS and components thereof -->
+		<debug-panel options="model"></debug-panel>
+		<pre>{{model|json}}</pre>
+		<pre>{{pages|json}}</pre>
 		<script
 			type="text/javascript"
 			src="bower_components/angular/angular.js">
