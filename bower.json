@@ -3,13 +3,18 @@
   "version": "0.0.1",
   "main":[
     "dist/itDebugPanel.min.js",
-    "dist/styles/optimizes.css"
+    "dist/styles/optimized.css"
   ],
   "ignore":[
     "dist/index.html",
     "dist/scripts",
     "dist/component",
-    "dist/bower_components"
+    "dist/bower_components",
+    "app/",
+    "test/",
+    "sublime/",
+    ".*",
+    "/*.*"
   ],
   "dependencies": {
     "angular": "~1.2.0-rc.3",
