@@ -267,6 +267,7 @@
               '*.{ico,png,txt}',
               '.htaccess',
               '*.html',
+              'scripts/**/*.js',
               'bower_components/**/*.{js,html}'
             ]
           }, {
