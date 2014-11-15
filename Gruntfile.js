@@ -266,7 +266,8 @@
             src: [
               '*.{ico,png,txt}',
               '.htaccess',
-              '*.html'
+              '*.html',
+              'bower_components/**/*.{js,html}'
             ]
           }, {
             expand: true,

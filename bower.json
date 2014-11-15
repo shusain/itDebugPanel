@@ -5,6 +5,10 @@
     "dist/itDebugPanel.min.js",
     "dist/styles/optimizes.css"
   ],
+  "ignore":[
+    "dist/index.html",
+    "dist/bower_components"
+  ],
   "dependencies": {
     "angular": "~1.2.0-rc.3",
     "bootstrap-css-only": "^3.x"
