@@ -268,7 +268,7 @@
               '.htaccess',
               '*.html',
               'scripts/**/*.js',
-              'component/**/*.js',
+              'component/**/*.{js,html}',
               'bower_components/**/*.{js,html}'
             ]
           }, {
