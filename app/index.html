@@ -30,10 +30,21 @@
 	<!-- BODY -->
 	<body ng-controller="TestCtrl">
 		<h1>The perfect place to build components</h1>
+
 		<!-- AngularJS and components thereof -->
-		<debug-panel options="model"></debug-panel>
-		<pre>{{model|json}}</pre>
-		<pre>{{pages|json}}</pre>
+		<debug-panel></debug-panel>
+
+		<div ng-controller="TestCtrl">
+			TestCtrl 2
+			<pre>{{model|json}}</pre>
+			<pre>{{pages|json}}</pre>
+		</div>
+
+		<div ng-controller="TestCtrl2">
+			Test Ctrl2
+			<pre>{{model|json}}</pre>
+		</div>
+
 		<script
 			type="text/javascript"
 			src="bower_components/angular/angular.js">

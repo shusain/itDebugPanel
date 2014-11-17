@@ -52,7 +52,8 @@
             livereload: '<%= connect.options.livereload %>'
           },
           files: [
-            '<%= yeoman.app %>/{,*/}*.html',
+            '<%= yeoman.app %>/**/*.html',
+            '<%= yeoman.app %>/**/*.tpl.html',
             '.tmp/styles/{,*/}*.css',
             '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
           ]

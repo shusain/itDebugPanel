@@ -5,8 +5,16 @@
         <i class="glyphicon glyphicon-remove"></i>
       </span>
       <h3 class="panel-title">Debug Panel</h3>
+      <button ng-click="targetElement()">
+        <i ng-click="filterText = ''" class="glyphicon glyphicon-screenshot"></i>
+        Inspect
+      </button>
+      <div>
+        <input placeholder="Filter" type="text" block-mouse-down ng-model="filterText" >
+        <i ng-click="filterText = ''" class="glyphicon glyphicon-remove-circle"></i>
+      </div>
     </div>
-    <options-form options="options">
+    <options-form tree-node="filteredOptions">
     </options-form>
   </div>
 </div>

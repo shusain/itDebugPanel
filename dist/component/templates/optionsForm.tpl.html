@@ -1,24 +1,22 @@
-<div ng-show="getType(options) == 'Array'">
-  <div ng-click="arrayVisible=!arrayVisible" class="elementRow" ng-class="{'selected':arrayVisible}">
-    Array
-  </div>
-</div>
-<div ng-show="getType(options) != 'Array'||arrayVisible" ng-repeat="(key, value) in options track by $index" style="max-width:400px;">
-  <div ng-if="isObject(options[key])" class="well well-sm">
-    <div ng-click="visible=!visible" class="elementRow" ng-class="{'selected':visible}">Object: {{key}}</div>
-    <options-form ng-show="visible" options="options[key]">
+<div ng-repeat="node in treeNode.children track by $index">
+  <div ng-if="node.children.length>0&&node.isActive" class="well well-sm">
+    <div block-mouse-down ng-click="visible=!visible" class="elementRow" ng-class="{'selected':visible}">Object: {{node.key}}</div>
+    <options-form ng-show="visible" tree-node="node">
     </options-form>
     <br/>
   </div>
-  <div class="container-fluid" ng-if="getType(options[key])!='Array'&&getType(options[key])!='Object'">
+  <div class="container-fluid" ng-if="node.children.length==0&&node.isActive">
     <div class="row">
       <div class="col-xs-8">
-        {{key}}:
+        {{node.key}}:
       </div>
-      <div ng-switch="getType(value)">
-        <input ng-switch-when="Boolean" block-mouse-down class="col-xs-4" type="checkbox" ng-model="options[key]">
-        <input ng-switch-when="Number" block-mouse-down class="col-xs-4" type="number" ng-model="options[key]">
-        <input ng-switch-default block-mouse-down class="col-xs-4" type="text" ng-model="options[key]">
+      <div ng-switch="node.type">
+        <input ng-switch-when="Boolean" block-mouse-down class="col-xs-4" type="checkbox" ng-model="node.obj[node.key]">
+        <input ng-switch-when="Number" block-mouse-down class="col-xs-4" type="number" ng-model="node.obj[node.key]">
+        <span ng-switch-when="Function">
+          Function
+        </span>
+        <input ng-switch-default block-mouse-down class="col-xs-4" type="text" ng-model="node.obj[node.key]">
       </div>
     </div>
   </div>
