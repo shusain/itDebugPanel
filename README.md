@@ -1,48 +1,36 @@
-#Project Template
+#IT-Debug-Panel
 
 ##Introduction
 
-Basic project with header, body, footer, navigation, and some basic angular routing setup.
+###[Demo](http://shusain.github.io/itDebugPanel/dist/)
+
+**IT-Debug-Panel** is meant to make modifying model objects on the fly for manual testing and tweaking purposes possible.  Allows you to target an element visually and see the associated scope as a tree view with the ability to search the tree for a given key or value.  When the search is done all nodes in the tree built from the object being inspected that are parents or children of a key or value that matches the search text will be marked active and the remaining nodes will be marked inactive and hidden from view.
 
 ----------------------
-## Cloning the Project
-### SSH Connection
-`ssh -i ~/.ssh/System76Connection.pem ubuntu@intellectual-tech.com`
+## Install
+Note this project requires Bootstrap CSS for some basic icons and other styling elements.  You can either include some bootstrap CSS 3.x from your project or use the bootstrap included as a dependency of this project (relied on a Bootstrap CSS only github repo to avoid unnecessarily including jQuery)
 
-### Login as Git User and Make Bare Repo
+### Bower
 ```
-su git
-cd ~/repo
-git init --bare newProjectNameHere.git
+bower install https://github.com/shusain/itDebugPanel.git#develop --save
 ```
-
-### Make a Copy of this Project Template
-```
-mkdir ~/tempGitCreation
-cd ~/tempGitCreation
-git clone --mirror git@intellectual-tech.com:repo/project-template.git
-```
-
-### Push the Project Template into the New Project Repository
-```
-cd project-template.git
-git push --mirror git@intellectual-tech.com:repo/newProjectNameHere.git
-cd /var/www/
-git clone git@intellectual-tech.com:repo/newProjectNameHere.git
-cd newProjectNameHere
-npm install
-bower install
-grunt phpwatch
-```
-----------------------
-##Post Cloning Updates
-Update the following sections that have company related information
-
-* HTML Page Title
-* Header/Logo
-* Footer
-* Contact Page
+If using **wiredep** you *should* be ready to use the component.  If not using wiredep grunt task or gulp plugin if not just include the bower_components/it-debug-panel/dist/itDebugPanel.js and bower_components/it-debug-panel/dist/styles/optimized.css files.
 
 
-##Update Navigation and Create Partials to Reflect Page Structure
-Update the mainApp.js file to have the appropriate routes and partials for navigation.  For each page create a partial with a header to test the navigation.
+### Manual Install
+Download the contents of the dist folder and put them in your project include the files as described.
+
+### Usage
+As the first child of the body element add the following, note that both the attributes are optional.  The panel-visible attribute expects some boolean and is used to give you a way to hook a button to toggle the debug panel within your app.  The watch-model attribute just sets a default object to show in the panel.
+
+#### Super complex usage
+    <debug-panel
+      watch-model="myModel"
+      panel-visible="myModel.someBool">
+    </debug-panel>
+
+#### Simple complex usage
+    <debug-panel>
+    </debug-panel>
+    
+Use <big>**Alt+Shift+D**</big> to toggle, if no toggle boolean is provided.
