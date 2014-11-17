@@ -52,8 +52,7 @@
             livereload: '<%= connect.options.livereload %>'
           },
           files: [
-            '<%= yeoman.app %>/**/*.html',
-            '<%= yeoman.app %>/**/*.tpl.html',
+            '<%= yeoman.app %>/**/*.{html,eot,svg,ttf,woff}',
             '.tmp/styles/{,*/}*.css',
             '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
           ]
@@ -270,7 +269,7 @@
               '*.html',
               'scripts/**/*.js',
               'component/**/*.{js,html}',
-              'bower_components/**/*.{js,html,css}'
+              'bower_components/**/*.{js,html,css,eot,svg,ttf,woff}'
             ]
           }, {
             expand: true,
