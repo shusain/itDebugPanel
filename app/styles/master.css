@@ -1,10 +1,10 @@
 .debugPanel {
   position: relative;
-  border: 1px solid red;
+  border: 2px groove red;
   cursor: pointer;
-  background-color: rgba(255,255,255,.6);
+  background-color: rgba(255,255,255,.8);
   width:500px;
-  max-height:100vh;
+  max-height:95vh;
   overflow-y:auto;
   border-radius: 0px;
 }
@@ -18,6 +18,9 @@
 
 .debugPanel .elementRow{
   background-color: #ddffdd;
+  border-radius: 5px 5px 0px 0px;
+  padding: 5px;
+  transition: background-color linear .5s;
 }
 .debugPanel .selected{
   background-color: #ccccff;
@@ -26,6 +29,40 @@
 {
   margin-bottom:5px;
 }
+.debugPanel .well
+{
+  background-color: rgba(0,0,0,0);
+}
 .debugPanel .glyphicon-remove:hover, .debugPanel .glyphicon-remove-circle:hover{
   color:red;
+}
+.debugPanel .glyphicon-remove{
+  margin-top: 4px;
+}
+.debugPanel .hRule {
+  width: 100%;
+  margin: 15px 0px 15px 0px;
+  height: 2px;
+  background-color: red;
+}
+.debugPanel .hRuleLight {
+  width: 100%;
+  margin: 5px 0px 5px 0px;
+  height: 1px;
+  background-color: rgba(255,0,0,.5);
+}
+
+.debugPanel .panel-title{
+  font-size:24px;
+  margin-right:15px;
+}
+
+.debugPanel h6 {
+  display:inline-block;
+  margin-top:0px;
+  margin-bottom:0px;
+}
+
+code.custom-code {
+  color:blue;
 }

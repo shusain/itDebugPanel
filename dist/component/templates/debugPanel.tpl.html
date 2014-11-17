@@ -4,16 +4,22 @@
       <span class="pull-right" ng-click="panelVisible=false">
         <i class="glyphicon glyphicon-remove"></i>
       </span>
-      <h3 class="panel-title">Debug Panel</h3>
-      <button ng-click="targetElement()">
-        <i ng-click="filterText = ''" class="glyphicon glyphicon-screenshot"></i>
-        Inspect
-      </button>
+      <h3 class="panel-title pull-left">Debug Panel</h3>
+      <div>
+        <button ng-click="targetElement()" class="btn btn-primary">
+          <i ng-click="filterText = ''" class="glyphicon glyphicon-screenshot"></i>
+          Inspect
+        </button>
+        <h6>After clicking click<br> the target element</h6>
+      </div>
+      <div class="hRule"></div>
+      
       <div>
         <input placeholder="Filter" type="text" block-mouse-down ng-model="filterText" >
         <i ng-click="filterText = ''" class="glyphicon glyphicon-remove-circle"></i>
       </div>
     </div>
+    <br><br>
     <options-form tree-node="filteredOptions">
     </options-form>
   </div>

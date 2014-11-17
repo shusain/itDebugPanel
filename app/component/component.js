@@ -52,20 +52,37 @@
       };
     }])
 
+    .directive('code', function($sce){
+      return {
+        restrict:'A',
+        priority:10000,
+        link: function(scope,iElem,attrs){
+
+          console.log(iElem[0].innerHTML);
+          var replaced = iElem[0].innerHTML.trim();
+          replaced = replaced.replace(/&/g, '&amp;')
+          replaced = replaced.replace(/</g,'&lt;');
+          replaced = replaced.replace(/>/g,'&gt;');
+          replaced = replaced.replace(/\s/g,'<br>&nbsp;&nbsp;')
+          replaced = replaced.replace(/&gt;&lt;/g,'&gt;<br>&lt;');
+          iElem.replaceWith(replaced);
+          // scope.display = $sce.trustAsHtml(replaced);
+        }
+      }
+    })
+
     .directive('debugPanel', function($document, $filter){
       return {
         restrict:'E',
-        scope: { options: '=', panelVisible: '=?' },
+        scope: { watchModel: '=', panelVisible: '=?' },
         templateUrl:'component/templates/debugPanel.tpl.html',
-        link:function(scope){
-          scope.$watch('options', function(newVal){
-            console.log('options changed')
+        link:function(scope, iElem){
+          scope.$watch('watchModel', function(newVal){
             scope.filteredOptions = $filter('objectFilter')(newVal, scope.filterText);
           }, true);
           var targetOptions;
 
           scope.$watch(function(){return targetOptions}, function(newVal){
-            console.log('target options changed')
             if(!newVal)
               return;
             scope.filteredOptions = $filter('objectFilter')(newVal, scope.filterText);
@@ -75,35 +92,32 @@
             if(targetOptions)
               scope.filteredOptions = $filter('objectFilter')(targetOptions, scope.filterText);  
             else
-              scope.filteredOptions = $filter('objectFilter')(scope.options, scope.filterText);
+              scope.filteredOptions = $filter('objectFilter')(scope.watchModel, scope.filterText);
           });
 
           scope.targetElement = function(){
             var angHovElem;
             var initalBackgroundColor;
-            console.log('targetElement')
             $document.bind('mousemove', function handler(event){
               function mouseOutHandler(){
-                console.log('mouseout');
                 hoveredElem.style.backgroundColor = initalBackgroundColor;
                 angHovElem.unbind('mouseout', mouseOutHandler);
                 angHovElem.unbind('click', clickHandler);
                 angHovElem = null;
               }
               function clickHandler(){
-                console.log('click')
                 hoveredElem.style.backgroundColor = initalBackgroundColor;
                 angHovElem.unbind('mouseout', mouseOutHandler);
                 angHovElem.unbind('click', clickHandler);
                 $document.unbind('mousemove', handler);
                 targetOptions = angHovElem.scope();
                 scope.$apply();
-                console.log(angHovElem.scope());
                 angHovElem = null;
               }
               var hoveredElem = document.elementFromPoint(event.clientX,event.clientY);
-              console.log('move')
-              if(!angHovElem)
+              if(iElem[0].contains(hoveredElem))
+                hoveredElem = null;
+              if(!angHovElem && hoveredElem)
               {
                 initalBackgroundColor = hoveredElem.style.backgroundColor;
                 hoveredElem.style.backgroundColor = 'blue';
@@ -160,7 +174,7 @@
       };
 
       TreeNode.prototype.matches = function(searchText){
-        return (this.key&&this.key.indexOf&&this.key.indexOf(searchText)!=-1)||(this.value&&this.value.indexOf&&this.value.indexOf(searchText)!=-1);
+        return (this.key&&this.key.indexOf&&this.key.indexOf(searchText)!=-1)||(this.value&&this.value.indexOf&&this.value.indexOf(searchText)!=-1)||(this.value==searchText);
       };
 
       function buildTree(obj,parent, isActive){

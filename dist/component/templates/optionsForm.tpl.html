@@ -1,6 +1,7 @@
 <div ng-repeat="node in treeNode.children track by $index">
+  <div class="hRuleLight"></div>
   <div ng-if="node.children.length>0&&node.isActive" class="well well-sm">
-    <div block-mouse-down ng-click="visible=!visible" class="elementRow" ng-class="{'selected':visible}">Object: {{node.key}}</div>
+    <div block-mouse-down ng-click="visible=!visible" class="elementRow" ng-class="{'selected':visible}">{{node.type}}: {{node.key}}</div>
     <options-form ng-show="visible" tree-node="node">
     </options-form>
     <br/>
@@ -10,13 +11,13 @@
       <div class="col-xs-8">
         {{node.key}}:
       </div>
-      <div ng-switch="node.type">
-        <input ng-switch-when="Boolean" block-mouse-down class="col-xs-4" type="checkbox" ng-model="node.obj[node.key]">
-        <input ng-switch-when="Number" block-mouse-down class="col-xs-4" type="number" ng-model="node.obj[node.key]">
+      <div ng-switch="node.type" class="col-xs-4">
+        <input class="form-control" ng-switch-when="Boolean" block-mouse-down type="checkbox" ng-model="node.obj[node.key]">
+        <input class="form-control" ng-switch-when="Number" block-mouse-down type="number" ng-model="node.obj[node.key]">
         <span ng-switch-when="Function">
           Function
         </span>
-        <input ng-switch-default block-mouse-down class="col-xs-4" type="text" ng-model="node.obj[node.key]">
+        <input class="form-control" ng-switch-default block-mouse-down type="text" ng-model="node.obj[node.key]">
       </div>
     </div>
   </div>
